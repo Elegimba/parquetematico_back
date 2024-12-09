@@ -56,3 +56,21 @@ Content-Type: application/json
     "attractions_id": 1
     
 }
+
+###
+
+PUT {{host}}/api/schedules/3
+Content-Type: application/json
+
+{
+
+    "start_time": "2024-12-10T10:00:00.000Z",
+    "end_time": "2024-12-10T12:00:00.000Z",
+    "users_id": 3,
+    "attractions_id": 2
+    
+}
+
+###
+
+DELETE {{host}}/api/schedules/3
