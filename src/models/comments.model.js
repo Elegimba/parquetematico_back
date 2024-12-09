@@ -10,7 +10,7 @@ const Comment = sequelize.define('Comment', {
         allowNull: false,
         type: DataTypes.INTEGER
     },
-    name: {
+    comments: {
         type: DataTypes.STRING(250),
         allowNull: true
     }

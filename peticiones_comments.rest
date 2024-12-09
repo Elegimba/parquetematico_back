@@ -1,0 +1,34 @@
+@host= http://localhost:3000
+
+@comments= {{host}}/api/comments
+
+
+GET {{comments}}
+
+
+###
+GET {{comments}}/3
+
+
+###
+POST {{comments}}
+Content-Type: application/json
+
+{
+    "comments": "fuca que flipas",
+    "users_id": 4,
+    "schedule_id": 10
+}
+
+ 
+###
+PUT {{comments}}/2
+Content-Type: application/json
+
+{
+    "comments": "fuca casi bien"
+}
+
+
+###
+DELETE {{comments}}/2

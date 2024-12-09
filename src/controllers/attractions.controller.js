@@ -1,10 +1,10 @@
 const Attraction = require("../models/attractions.model");
 
-// Example controller
+
 const getAll = async (req, res, next) => {
     try {
         const attractions = await Attraction.findAll();
-        res.json(attractions)
+        res.json(attractions);
     } catch (error) {
         next(error)
     }
