@@ -21,11 +21,8 @@ const getById = async (req, res, next) => {
 }
 
 const createUser = async (req, res, next) => {
-    const { name, surnames, email, password } = req.body;
     try {
-        const user = await User.create({
-            name, surnames, email, password
-        });
+        const user = await User.create(req.body);
         res.json(user)
     } catch (error) {
         next(error)

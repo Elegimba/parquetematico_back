@@ -4,16 +4,16 @@ GET {{host}}/api/attractions
 
 
 ###
-GET {{host}}/api/users/10
+GET {{host}}/api/users/1
 
 ###
 POST {{host}}/api/users
 Content-Type: application/json
 
 {
-    "name": "Juan",
+    "name": "Juanito",
     "surnames": "Perez",
-    "email": "juanito@gmail.com",
+    "email": "juanitoiorrrrr@gmail.com",
     "password": "123456"
 }
 
@@ -31,4 +31,28 @@ Content-Type: application/json
 
 ###
 
-DELETE {{host}}/api/users/11
+DELETE {{host}}/api/users/1456789
+
+
+
+###
+
+GET {{host}}/api/schedules
+
+###
+
+GET {{host}}/api/schedules/3
+
+###
+
+POST {{host}}/api/schedules
+Content-Type: application/json
+
+{
+
+    "start_time": "2024-12-10T10:00:00.000Z",
+    "end_time": "2024-12-10T12:00:00.000Z",
+    "users_id": 2,
+    "attractions_id": 1
+    
+}
