@@ -14,7 +14,7 @@
     "init",
     "template"
   ],
-  "author": "Mario Girón Martín",
+  "author": "Yago, Alvaro, Fran",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",

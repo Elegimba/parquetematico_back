@@ -4,3 +4,31 @@ GET {{host}}/api/attractions
 
 
 ###
+GET {{host}}/api/users/10
+
+###
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+    "name": "Juan",
+    "surnames": "Perez",
+    "email": "juanito@gmail.com",
+    "password": "123456"
+}
+
+###
+
+PUT {{host}}/api/users/11
+Content-Type: application/json
+
+{
+    "name": "Juanan",
+    "surnames": "Perez",
+    "email": "juanito@gmail.com",
+    "password": "123456"
+}
+
+###
+
+DELETE {{host}}/api/users/11
