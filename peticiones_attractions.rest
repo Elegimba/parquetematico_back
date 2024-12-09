@@ -1,0 +1,42 @@
+@host= http://localhost:3000
+
+@att= {{host}}/api/attractions
+
+GET {{host}}/api/attractions
+
+
+###
+GET {{att}}/6
+
+
+###
+POST {{att}}
+Content-Type: application/json
+
+{
+  "name": "Sky Drop",
+  "capacity": 20,
+  "min_height": "140 cm",
+  "average_duration": "2 min",
+  "wait_time": "7 min",
+  "functional": true
+}
+
+
+###
+PUT {{att}}/8f
+Content-Type: application/json
+
+{
+  "name": "Sky Drop",
+  "capacity": 19,
+  "min_height": "140 cm",
+  "average_duration": "2 min",
+  "wait_time": "7 min",
+  "functional": true
+}
+
+
+###
+DELETE {{att}}/6
+
