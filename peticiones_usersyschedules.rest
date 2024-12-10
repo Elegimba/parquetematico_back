@@ -13,9 +13,8 @@ Content-Type: application/json
 {
     "name": "Yago",
     "surnames": "Perez",
-    "email": "yagio2345@gmail.com",
-    "password": "123457",
-    "role": ""
+    "email": "yagio@gmail.com",
+    "password": "1234"
 }
 
 ###
@@ -24,8 +23,8 @@ POST {{host}}/api/users/login
 Content-Type: application/json
 
 {
-    "email": "yagio12@gmail.com",
-    "password": "123457"
+    "email": "yagio@gmail.com",
+    "password": "1234"
 }
 
 ###
@@ -42,7 +41,7 @@ Content-Type: application/json
 
 ###
 
-DELETE {{host}}/api/users/1456789
+DELETE {{host}}/api/users/12
 
 
 
