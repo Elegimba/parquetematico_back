@@ -4,17 +4,28 @@ GET {{host}}/api/attractions
 
 
 ###
-GET {{host}}/api/users/1
+GET {{host}}/api/users/
 
 ###
-POST {{host}}/api/users
+POST {{host}}/api/users/register
 Content-Type: application/json
 
 {
-    "name": "Juanito",
+    "name": "Yago",
     "surnames": "Perez",
-    "email": "juanitoiorrrrr@gmail.com",
-    "password": "123456"
+    "email": "yagio2345@gmail.com",
+    "password": "123457",
+    "role": ""
+}
+
+###
+
+POST {{host}}/api/users/login
+Content-Type: application/json
+
+{
+    "email": "yagio12@gmail.com",
+    "password": "123457"
 }
 
 ###
