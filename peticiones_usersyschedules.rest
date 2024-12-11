@@ -41,7 +41,7 @@ Content-Type: application/json
 
 ###
 
-DELETE {{host}}/api/users/12
+DELETE {{host}}/api/users/10
 
 
 

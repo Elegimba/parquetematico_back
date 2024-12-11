@@ -30,7 +30,7 @@ const createUser = async (req, res, next) => {
 
         const user = await User.create(req.body);
 
-        res.json(user)
+        res.json({ user, message: "Registrado con exito" })
 
     } catch (error) {
         next(error)
