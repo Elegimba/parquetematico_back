@@ -1,6 +1,9 @@
 const User = require("../models/users.model")
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const Schedule = require("../models/schedules.model");
+const Attraction = require("../models/attractions.model");
+const e = require("express");
 
 
 const getAll = async (req, res, next) => {
@@ -97,6 +100,46 @@ const login = async (req, res, next) => {
     }
 }
 
+const getAttracSchedule = async (req, res, next) => {
+    const { userId } = req.params;
+
+    try {
+
+        const horarios = await Schedule.findAll({
+            where: { users_id: userId },
+            include: [
+                {
+                    model: Attraction,
+                    as: 'attraction',
+                    attributes: ["id", "name"],
+                },
+            ],
+            order: [['start_time', 'ASC']],
+            attributes: {
+                exclude: ['users_id', 'attractions_id']
+            }
+        });
+        return res.json(horarios);
+        /* const resultado = horarios.map((horario) => ({
+
+            atraccion: {
+                name: horario.attraction.name,
+                id: horario.attraction.id
+            },
+            horas_asignadas: {
+                id: horario.id,
+                start_time: horario.start_time,
+                end_time: horario.end_time
+            }
+        })); */
+
+        res.json(resultado);
+    } catch (error) {
+
+        res.status(500).json({ error: "No se pudieron obtener los datos." });
+    }
+};
+
 module.exports = {
-    getAll, getById, createUser, updateUser, deleteUser, login
+    getAll, getById, createUser, updateUser, deleteUser, login, getAttracSchedule
 }
