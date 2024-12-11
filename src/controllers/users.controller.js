@@ -39,13 +39,15 @@ const createUser = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
     const { userId } = req.params;
-    const { name, surnames, email, password } = req.body;
+    const { name, surnames, email } = req.body;
     try {
         const user = await User.findByPk(userId);
         user.name = name;
         user.surnames = surnames;
         user.email = email;
-        user.password = password;
+
+        req.body.password = await bcrypt.hash(req.body.password, 10);
+
         await user.update(req.body);
         res.json(user)
     } catch (error) {
