@@ -1,13 +1,15 @@
 const { getAll, getById, createComment, editComment, deleteComment, getCommentByUser } = require('../../controllers/comments.controller');
+const { checkCommentId } = require('../../middlewares/comments.middleware');
+const { checkUserID } = require('../../middlewares/users.middleware');
 
 const router = require('express').Router();
 
 router.get('/', getAll);
-router.get('/:commentId', getById);
-router.get('/:userId/comments', getCommentByUser);
+router.get('/:commentId', checkCommentId, getById);
+router.get('/:userId/comments', checkUserID, getCommentByUser);
 router.post('/', createComment);
-router.put('/:commentId', editComment);
-router.delete('/:commentId', deleteComment);
+router.put('/:commentId', checkCommentId, editComment);
+router.delete('/:commentId', checkCommentId, deleteComment);
 
 
 module.exports = router;
