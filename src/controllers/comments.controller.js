@@ -1,4 +1,5 @@
 const Comment = require("../models/comments.model");
+const Schedule = require("../models/schedules.model");
 
 
 const getAll = async (req, res, next) => {
@@ -18,6 +19,32 @@ const getById = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
+}
+
+
+
+const getCommentByUser = async (req, res, next) => {
+
+    const { userId } = req.params;
+    try {
+        const comments = await Comment.findAll({
+            where: { users_id: userId },
+            include: [
+                {
+                    model: Schedule,
+                    as: 'schedule',
+                    attributes: ["id", "start_time", "end_time"],
+                },
+            ],
+            attributes: {
+                exclude: ['users_id', 'schedule_id']
+            }
+        });
+        res.json(comments);
+    } catch (error) {
+        next(error);
+    }
+
 }
 
 const createComment = async (req, res, next) => {
@@ -52,5 +79,5 @@ const deleteComment = async (req, res, next) => {
 }
 
 module.exports = {
-    getAll, getById, createComment, editComment, deleteComment
+    getAll, getById, createComment, editComment, deleteComment, getCommentByUser
 }

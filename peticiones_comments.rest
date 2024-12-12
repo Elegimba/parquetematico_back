@@ -32,3 +32,7 @@ Content-Type: application/json
 
 ###
 DELETE {{comments}}/2
+
+
+###
+GET {{comments}}/2/comments
