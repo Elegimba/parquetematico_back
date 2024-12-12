@@ -1,4 +1,6 @@
+
 const Schedule = require("../models/schedules.model");
+const Attraction = require("../models/attractions.model");
 
 // Example controller
 const getAll = async (req, res, next) => {
@@ -13,7 +15,16 @@ const getAll = async (req, res, next) => {
 const getById = async (req, res, next) => {
     const { scheduleId } = req.params;
     try {
-        const schedule = await Schedule.findByPk(scheduleId);
+        const schedule = await Schedule.findByPk(scheduleId, {
+            include: [
+                {
+                    model: Attraction,
+                    as: 'attraction',
+                    attributes: ['id', 'name']
+
+                }
+            ]
+        });
         res.json(schedule)
     } catch (error) {
         next(error)
