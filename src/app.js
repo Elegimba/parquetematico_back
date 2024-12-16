@@ -6,6 +6,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.use(express.static('public'));
+
 // Route configuration
 // Ex.
 app.use('/api', require('./routes/api.routes'));
@@ -22,5 +24,6 @@ app.use((err, req, res, next) => {
     console.error(err.stack)
     res.status(500).json(err);
 })
+
 
 module.exports = app;

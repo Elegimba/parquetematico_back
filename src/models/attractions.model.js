@@ -31,6 +31,10 @@ const Attraction = sequelize.define('Attraction', {
     functional: {
         type: DataTypes.BOOLEAN,
         allowNull: true
+    },
+    image: {
+        type: DataTypes.STRING(250),
+        allowNull: true
     }
 
 }, {
