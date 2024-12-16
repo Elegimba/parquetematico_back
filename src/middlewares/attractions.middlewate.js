@@ -1,5 +1,6 @@
 const Attraction = require('../models/attractions.model');
 
+
 const checkAttractionId = async (req, res, next) => {
     const { attractionId } = req.params;
     const attraction = await Attraction.findByPk(attractionId);

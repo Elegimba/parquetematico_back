@@ -1,5 +1,5 @@
 const Attraction = require("../models/attractions.model");
-
+const fs = require('fs');
 
 const getAll = async (req, res, next) => {
     try {
@@ -22,6 +22,12 @@ const getById = async (req, res, next) => {
 
 const createAttraction = async (req, res, next) => {
     try {
+        const extension = '.' + req.file.mimetype.split('/')[1];
+        const newName = req.file.filename + extension;
+        const newPath = req.file.path + extension;
+        fs.renameSync(req.file.path, newPath);
+        
+        req.body.image = `attractions/${newName}`;
         const newAttraction = await Attraction.create(req.body);
         res.json(newAttraction);
     } catch (error) {
