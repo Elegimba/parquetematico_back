@@ -9,7 +9,7 @@ const router = require('express').Router();
 router.get('/', getAll);
 router.get('/:attractionId', checkAttractionId, getById);
 router.post('/', upload.single('image'), createAttraction);
-router.put('/:attractionId', checkAttractionId, updateAttraction);
+router.put('/:attractionId', upload.single('image'), checkAttractionId, updateAttraction);
 router.delete('/:attractionId', checkAttractionId, deleteAttraction);
 
 

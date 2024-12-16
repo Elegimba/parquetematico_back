@@ -20,6 +20,16 @@ const getById = async (req, res, next) => {
     }
 }
 
+const addExtension = (req) => {
+    const extension = '.' + req.file.mimetype.split('/')[1];
+    const newName = req.file.filename + extension;
+    const newPath = req.file.path + extension;
+    fs.renameSync(req.file.path, newPath);
+
+    req.body.image = `attractions/${newName}`;
+    return req.body.image;
+}
+
 const createAttraction = async (req, res, next) => {
     try {
         const extension = '.' + req.file.mimetype.split('/')[1];
@@ -39,7 +49,11 @@ const updateAttraction = async (req, res, next) => {
     const { attractionId } = req.params;
     try {
         const attraction = await Attraction.findByPk(attractionId);
-        await attraction.update(req.body);
+        const updateData = req.body;
+        if(req.file) {
+            updateData.image = addExtension(req);
+        }
+        await attraction.update(updateData);
         res.json(attraction);
     } catch (error) {
         next(error);
