@@ -1,10 +1,32 @@
+const Attraction = require("../models/attractions.model");
 const Comment = require("../models/comments.model");
 const Schedule = require("../models/schedules.model");
+const User = require("../models/users.model");
 
 
 const getAll = async (req, res, next) => {
     try {
-        const comments = await Comment.findAll();
+        const comments = await Comment.findAll({
+            include: [
+                {
+                    model: Schedule,
+                    as: 'schedule',
+                    attributes: ["id", "start_time", "end_time"],
+
+                    include: {
+                        model: Attraction,
+                        as: 'attraction',
+                        attributes: ["id", "name"]
+                    }
+
+                },
+                {
+                    model: User,
+                    as: 'user',
+                    attributes: ["id", "name"]
+                }
+            ],
+        });
         res.json(comments);
     } catch (error) {
         next(error);

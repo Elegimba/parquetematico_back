@@ -13,7 +13,16 @@ const Comment = sequelize.define('Comment', {
     comments: {
         type: DataTypes.STRING(250),
         allowNull: true
+    },
+    users_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    schedule_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
+
 
 }, {
     sequelize, tableName: 'comments', timestamps: true
