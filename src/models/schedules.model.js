@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const User = require('./users.model');
 const Attraction = require('./attractions.model');
+const Comment = require('./comments.model');
 
 const Schedule = sequelize.define('Schedule', {
     id: {
@@ -27,5 +28,7 @@ User.hasMany(Schedule, { as: 'schedules', foreignKey: 'users_id' });
 
 Schedule.belongsTo(Attraction, { as: 'attraction', foreignKey: 'attractions_id' });
 Attraction.hasMany(Schedule, { as: 'schedules', foreignKey: 'attractions_id' });
+
+Schedule.hasOne(Comment, { as: 'comment', foreignKey: 'schedule_id'});
 
 module.exports = Schedule;

@@ -49,7 +49,7 @@ const getCommentByUser = async (req, res, next) => {
 
     const { userId } = req.params;
     try {
-        const comments = await Comment.findAll({
+        const comments = await Comment.findOne({
             where: { users_id: userId },
             include: [
                 {

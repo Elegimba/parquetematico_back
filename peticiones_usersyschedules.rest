@@ -7,6 +7,9 @@ GET {{host}}/api/attractions
 GET {{host}}/api/users/
 
 ###
+GET {{host}}/api/users/2/schedules
+
+###
 POST {{host}}/api/users/register
 Content-Type: application/json
 

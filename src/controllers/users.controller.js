@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const Schedule = require("../models/schedules.model");
 const Attraction = require("../models/attractions.model");
-const e = require("express");
+const Comment = require("../models/comments.model");
 
 
 const getAll = async (req, res, next) => {
@@ -113,6 +113,11 @@ const getAttracSchedule = async (req, res, next) => {
                     as: 'attraction',
                     attributes: ["id", "name"],
                 },
+                {
+                    model: Comment,
+                    as: 'comment',
+                    attributes: ["id", "comments"]
+                }
             ],
             order: [['start_time', 'ASC']],
             attributes: {
@@ -133,7 +138,6 @@ const getAttracSchedule = async (req, res, next) => {
             }
         })); */
 
-        res.json(resultado);
     } catch (error) {
 
         res.status(500).json({ error: "No se pudieron obtener los datos." });

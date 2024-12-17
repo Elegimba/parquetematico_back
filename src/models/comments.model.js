@@ -29,9 +29,9 @@ const Comment = sequelize.define('Comment', {
 });
 
 Comment.belongsTo(User, { as: 'user', foreignKey: 'users_id' });
-User.hasMany(Schedule, { as: 'comments', foreignKey: 'users_id' });
+User.hasMany(Comment, { as: 'comments', foreignKey: 'users_id' });
 
-Comment.belongsTo(Schedule, { as: 'schedule', foreignKey: 'schedule_id' });
-Schedule.hasMany(Comment, { as: 'comments', foreignKey: 'schedule_id' });
+/* Comment.belongsTo(Schedule, { as: 'schedule', foreignKey: 'schedule_id' });
+Schedule.hasMany(Comment, { as: 'comments', foreignKey: 'schedule_id' }); */
 
 module.exports = Comment;
