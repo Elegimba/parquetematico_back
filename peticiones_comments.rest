@@ -7,7 +7,7 @@ GET {{comments}}
 
 
 ###
-GET {{comments}}/3
+GET {{comments}}/2/comment
 
 
 ###

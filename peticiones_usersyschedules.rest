@@ -43,11 +43,14 @@ Content-Type: application/json
 
 DELETE {{host}}/api/users/10
 
+###
+
+GET {{host}}/api/comments/schedule/1/comment
 
 
 ###
 
-GET {{host}}/api/schedules
+GET {{host}}/api/comments/schedule/1/comment
 
 ###
 
