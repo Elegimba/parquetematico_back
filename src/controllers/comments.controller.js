@@ -8,18 +8,7 @@ const getAll = async (req, res, next) => {
     try {
         const comments = await Comment.findAll({
             include: [
-                {
-                    model: Schedule,
-                    as: 'schedule',
-                    attributes: ["id", "start_time", "end_time"],
 
-                    include: {
-                        model: Attraction,
-                        as: 'attraction',
-                        attributes: ["id", "name"]
-                    }
-
-                },
                 {
                     model: User,
                     as: 'user',
@@ -27,6 +16,16 @@ const getAll = async (req, res, next) => {
                 }
             ],
         });
+
+        for (comment of comments) {
+            const schedule = await Schedule.findByPk(comment.id, {
+                include: [
+                    'attraction'
+                ]
+            });
+            comment.dataValues.schedule = schedule
+        }
+
         res.json(comments);
     } catch (error) {
         next(error);
