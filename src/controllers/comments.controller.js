@@ -72,22 +72,15 @@ const getCommentByUser = async (req, res, next) => {
 const getCommentBySchedule = async (req, res, next) => {
     const { scheduleId } = req.params
     try {
-        const comment = await Comment.findOne({
-            where: { schedule_id: scheduleId },
-            include: [
-                {
-                    model: Schedule,
-                    as: 'schedule',
-                    attributes: ["id", "start_time", "end_time", "attractions_id"],
-
-                    include: [{
-                        model: Attraction,
-                        as: 'attraction',
-                        attributes: ["id", "name"]
-                    }]
-                }
-            ]
+        const schedule = await Schedule.findByPk(scheduleId, {
+            include: ['attraction']
         })
+        const comment = await Comment.findOne({
+            where: {
+                schedule_id: scheduleId
+            }
+        })
+        comment.dataValues.schedule = schedule;
         res.json(comment)
     } catch (error) {
         next(error)

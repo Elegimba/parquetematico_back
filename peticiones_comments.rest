@@ -35,4 +35,4 @@ DELETE {{comments}}/2
 
 
 ###
-GET {{comments}}/2/comments
+GET {{comments}}/schedule/1/comment
