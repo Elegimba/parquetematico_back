@@ -34,6 +34,7 @@ const getById = async (req, res, next) => {
 const createSchedule = async (req, res, next) => {
     try {
         const schedule = await Schedule.create(req.body);
+
         res.json(schedule)
     } catch (error) {
         next(error)

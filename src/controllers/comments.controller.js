@@ -18,7 +18,7 @@ const getAll = async (req, res, next) => {
         });
 
         for (comment of comments) {
-            const schedule = await Schedule.findByPk(comment.id, {
+            const schedule = await Schedule.findByPk(comment.schedule_id, {
                 include: [
                     'attraction'
                 ]
@@ -88,6 +88,7 @@ const getCommentBySchedule = async (req, res, next) => {
 
 
 const createComment = async (req, res, next) => {
+    console.log(req.body)
     try {
         const newComment = await Comment.create(req.body);
         res.json(newComment);
