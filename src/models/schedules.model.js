@@ -29,6 +29,6 @@ User.hasMany(Schedule, { as: 'schedules', foreignKey: 'users_id' });
 Schedule.belongsTo(Attraction, { as: 'attraction', foreignKey: 'attractions_id' });
 Attraction.hasMany(Schedule, { as: 'schedules', foreignKey: 'attractions_id' });
 
-Schedule.hasOne(Comment, { as: 'comment', foreignKey: 'schedule_id'});
+Schedule.hasOne(Comment, { as: 'comment', foreignKey: 'schedule_id' });
 
 module.exports = Schedule;
